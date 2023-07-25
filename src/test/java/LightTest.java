@@ -1,28 +1,31 @@
 import org.example.Light;
 import org.example.LightImpl;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class LightTest {
-
-    @Test
-    public void testInitialState(){
-        Light light = new LightImpl();
-        Assertions.assertEquals(false, light.isLightOn());
+    Light light;
+    @BeforeEach
+    void setUp(){
+        light = new LightImpl();
     }
 
     @Test
-    public void testToggleToOn(){
-        Light light = new LightImpl();
-        light.toggle();
-        Assertions.assertEquals(true, light.isLightOn());
+    public void testLightInitialState(){
+        Assertions.assertFalse(light.isLightOn());
     }
 
     @Test
-    public void testToggleTwice(){
-        Light light = new LightImpl();
+    public void testLightToggleOnce(){
+        light.toggle();
+        Assertions.assertTrue(light.isLightOn());
+    }
+
+    @Test
+    public void testLightToggleTwice(){
         light.toggle();
         light.toggle();
-        Assertions.assertEquals(false, light.isLightOn());
+        Assertions.assertFalse(light.isLightOn());
     }
 }
