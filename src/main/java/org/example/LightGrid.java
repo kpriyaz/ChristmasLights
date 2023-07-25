@@ -23,6 +23,8 @@ public abstract class LightGrid {
 
     public abstract int countLitLights();
 
+    public abstract void toggleLights(Coordinates topLeft, Coordinates bottomRight);
+
     public int getMaxRows() {
         return maxRows;
     }
