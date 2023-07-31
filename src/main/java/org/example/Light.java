@@ -1,15 +1,19 @@
 package org.example;
 
 public abstract class Light {
-    private boolean lightOn;
+    private int brightness;
 
     public abstract void toggle();
 
-    public boolean isLightOn() {
-        return lightOn;
+    public abstract void turnOn();
+
+    public abstract void turnOff();
+
+    public int getBrightness() {
+        return brightness;
     }
 
-    public void setLightOn(boolean lightOn) {
-        this.lightOn = lightOn;
+    public void setBrightness(int brightness) {
+        this.brightness = brightness;
     }
 }

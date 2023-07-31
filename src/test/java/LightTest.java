@@ -13,31 +13,32 @@ public class LightTest {
 
     @Test
     public void testLightInitialState(){
-        Assertions.assertFalse(light.isLightOn());
+        Assertions.assertEquals(0, light.getBrightness());
     }
 
     @Test
     public void testLightToggleOnce(){
         light.toggle();
-        Assertions.assertTrue(light.isLightOn());
-    }
-
-    @Test
-    public void testLightToggleTwice(){
-        light.toggle();
-        light.toggle();
-        Assertions.assertFalse(light.isLightOn());
+        Assertions.assertEquals(2, light.getBrightness());
     }
 
     @Test
     public void testLightTurnedOn() {
-        light.setLightOn(true);
-        Assertions.assertTrue(light.isLightOn());
+        light.turnOn();
+        Assertions.assertEquals(1, light.getBrightness());
     }
 
     @Test
     public void testLightTurnedOff() {
-        light.setLightOn(false);
-        Assertions.assertFalse(light.isLightOn());
+        light.turnOn();
+        light.turnOff();
+        Assertions.assertEquals(0, light.getBrightness());
+    }
+
+    @Test
+    public void testLightBrightnessShouldBeNonNegative() {
+        light.turnOff();
+        light.turnOff();
+        Assertions.assertEquals(0, light.getBrightness());
     }
 }
