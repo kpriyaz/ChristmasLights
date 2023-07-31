@@ -9,6 +9,10 @@ public abstract class LightGrid {
     private int maxRows;
     private int maxCols;
 
+    public enum LightAction {
+        TURN_ON, TURN_OFF, TOGGLE
+    }
+
     public LightGrid(int maxRows, int maxCols) {
         this.maxRows = maxRows;
         this.maxCols = maxCols;
@@ -36,4 +40,8 @@ public abstract class LightGrid {
     public Light[][] getLights() {
         return lights;
     }
+
+    public abstract void turnOnLights(Coordinates topLeft, Coordinates bottomRight);
+
+    public abstract void turnOffLights(Coordinates topLeft, Coordinates bottomRight);
 }

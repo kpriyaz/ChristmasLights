@@ -28,4 +28,16 @@ public class LightTest {
         light.toggle();
         Assertions.assertFalse(light.isLightOn());
     }
+
+    @Test
+    public void testLightTurnedOn() {
+        light.setLightOn(true);
+        Assertions.assertTrue(light.isLightOn());
+    }
+
+    @Test
+    public void testLightTurnedOff() {
+        light.setLightOn(false);
+        Assertions.assertFalse(light.isLightOn());
+    }
 }
