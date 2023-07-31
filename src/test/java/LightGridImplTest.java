@@ -26,7 +26,7 @@ public class LightGridImplTest {
     @Test
     public void testInitialLightState(){
         Light[][] lights = grid.getLights();
-        Assertions.assertEquals(0, grid.countLitLights());
+        Assertions.assertEquals(0, grid.countLightBrightness());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class LightGridImplTest {
         Coordinates topLeft = new Coordinates(0,0);
         Coordinates bottomLeft = new Coordinates(grid.getMaxRows()-1, grid.getMaxCols()-1);
         grid.toggleLights(topLeft, bottomLeft);
-        Assertions.assertEquals(1000000, grid.countLitLights());
+        Assertions.assertEquals(2000000, grid.countLightBrightness());
     }
 
     @Test
@@ -50,23 +50,23 @@ public class LightGridImplTest {
         Coordinates bottomRight = new Coordinates(0, 999);
 
         grid.toggleLights(topLeft, bottomRight);
-        Assertions.assertEquals(1000, grid.countLitLights());
+        Assertions.assertEquals(2000, grid.countLightBrightness());
     }
 
 
     @Test
-    public void testCountLitLights(){
-        Assertions.assertEquals(0, grid.countLitLights());
+    public void testCountLightBrightness(){
+        Assertions.assertEquals(0, grid.countLightBrightness());
     }
 
     @Test
-    public void testCountLitLightsSingleCol(){
+    public void testCountLightBrightnessSingleCol(){
 
         Coordinates topLeft = new Coordinates(0,0);
         Coordinates bottomRight = new Coordinates(999, 0);
 
         grid.toggleLights(topLeft, bottomRight);
-        Assertions.assertEquals(1000, grid.countLitLights());
+        Assertions.assertEquals(2000, grid.countLightBrightness());
     }
 
     @Test
@@ -85,35 +85,35 @@ public class LightGridImplTest {
         grid.toggleLights(topLeft, bottomRight);
         grid.toggleLights(topLeft2, bottomRight2);
 
-        Assertions.assertEquals(count1+count2, grid.countLitLights());
+        Assertions.assertEquals((count1+count2) * 2, grid.countLightBrightness());
 
     }
 
     @Test
-    public void testTurnOnAllGridLights() {
+    public void testCountBrightnessWhenTurnedOnAllGridLights() {
         Coordinates topLeft = new Coordinates(0,0);
         Coordinates bottomLeft = new Coordinates(grid.getMaxRows()-1, grid.getMaxCols()-1);
         grid.turnOnLights(topLeft, bottomLeft);
-        Assertions.assertEquals(1000000, grid.countLitLights());
+        Assertions.assertEquals(1000000, grid.countLightBrightness());
     }
 
     @Test
-    public void testTurnOnLightsSingleRow(){
+    public void testCountBrightnessWhenTurnedOnLightsForSingleRow(){
         Coordinates topLeft = new Coordinates(0,0);
         Coordinates bottomRight = new Coordinates(0, 999);
 
         grid.turnOnLights(topLeft, bottomRight);
-        Assertions.assertEquals(1000, grid.countLitLights());
+        Assertions.assertEquals(1000, grid.countLightBrightness());
     }
 
     @Test
-    public void testTurnOnAndOffAllGridLights() {
+    public void testCountBrightnessWhenTurnedOnAndOffAllGridLights() {
         Coordinates topLeft = new Coordinates(0,0);
         Coordinates bottomLeft = new Coordinates(grid.getMaxRows()-1, grid.getMaxCols()-1);
         grid.turnOnLights(topLeft, bottomLeft);
-        Assertions.assertEquals(1000000, grid.countLitLights());
+        Assertions.assertEquals(1000000, grid.countLightBrightness());
         grid.turnOffLights(topLeft, bottomLeft);
-        Assertions.assertEquals(0, grid.countLitLights());
+        Assertions.assertEquals(0, grid.countLightBrightness());
     }
 
     private int getLightCountInGrid(Coordinates tl, Coordinates br){
