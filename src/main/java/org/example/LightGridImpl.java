@@ -8,17 +8,15 @@ public class LightGridImpl extends LightGrid{
     }
 
     @Override
-    public int countLitLights() {
-        int countOnLights = 0;
+    public int countLightBrightness() {
+        int brightness = 0;
 
         for(int i=0;i<this.getMaxRows();i++){
             for(int j=0;j<this.getMaxCols();j++){
-                if(lights[i][j].isLightOn()) {
-                    countOnLights++;
-                }
+                brightness += this.getLights()[i][j].getBrightness();
             }
         }
-        return countOnLights;
+        return brightness;
     }
 
     @Override
@@ -48,8 +46,8 @@ public class LightGridImpl extends LightGrid{
             for(int j=topLeft.getCol();j<=bottomRight.getCol();j++){
                 switch (action) {
                     case TOGGLE -> this.lights[i][j].toggle();
-                    case TURN_ON -> this.lights[i][j].setLightOn(true);
-                    case TURN_OFF -> this.lights[i][j].setLightOn(false);
+                    case TURN_ON -> this.lights[i][j].turnOn();
+                    case TURN_OFF -> this.lights[i][j].turnOff();
                     default -> {}
                 }
             }

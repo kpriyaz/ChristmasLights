@@ -25,7 +25,7 @@ public abstract class LightGrid {
         }
     }
 
-    public abstract int countLitLights();
+    public abstract int countLightBrightness();
 
     public abstract void toggleLights(Coordinates topLeft, Coordinates bottomRight);
 
