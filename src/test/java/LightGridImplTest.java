@@ -89,6 +89,33 @@ public class LightGridImplTest {
 
     }
 
+    @Test
+    public void testTurnOnAllGridLights() {
+        Coordinates topLeft = new Coordinates(0,0);
+        Coordinates bottomLeft = new Coordinates(grid.getMaxRows()-1, grid.getMaxCols()-1);
+        grid.turnOnLights(topLeft, bottomLeft);
+        Assertions.assertEquals(1000000, grid.countLitLights());
+    }
+
+    @Test
+    public void testTurnOnLightsSingleRow(){
+        Coordinates topLeft = new Coordinates(0,0);
+        Coordinates bottomRight = new Coordinates(0, 999);
+
+        grid.turnOnLights(topLeft, bottomRight);
+        Assertions.assertEquals(1000, grid.countLitLights());
+    }
+
+    @Test
+    public void testTurnOnAndOffAllGridLights() {
+        Coordinates topLeft = new Coordinates(0,0);
+        Coordinates bottomLeft = new Coordinates(grid.getMaxRows()-1, grid.getMaxCols()-1);
+        grid.turnOnLights(topLeft, bottomLeft);
+        Assertions.assertEquals(1000000, grid.countLitLights());
+        grid.turnOffLights(topLeft, bottomLeft);
+        Assertions.assertEquals(0, grid.countLitLights());
+    }
+
     private int getLightCountInGrid(Coordinates tl, Coordinates br){
         int rows = br.getRow() - tl.getRow() +1;
         int cols = br.getCol() - tl.getCol() +1;
