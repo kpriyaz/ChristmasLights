@@ -14,6 +14,7 @@ public abstract class LightGrid {
         this.maxCols = maxCols;
 
         lights = new Light[maxRows][maxCols];
+
         for (int i = 0; i < maxRows; i++) {
             for (int j = 0; j < maxCols; j++) {
                 lights[i][j] = new LightImpl();

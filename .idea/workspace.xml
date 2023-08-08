@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1607cf9-3ea1-4ee1-bc57-f305cec2a74e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/LightGridImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/LightImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/InvalidCoordinates.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Light.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LightGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LightGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LightGridImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LightImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/LightImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/impl/LightGridImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/LightGridImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/LightGridImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LightGridImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LightTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LightImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LightImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690284646388</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="more code">
+      <option name="closed" value="true" />
+      <created>1691062443547</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1691062443547</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

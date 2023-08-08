@@ -1,81 +1,74 @@
 import org.example.Coordinates;
-import org.example.Light;
 import org.example.impl.LightGridImpl;
 import org.example.impl.LightImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 public class LightGridImplTest {
 
-    LightGridImpl grid;
+    // 1M lights to be present
+    // countLitLights return 0 initially
+    // toggle 1 light - cll is 1
+    // grid dimensions
+    LightGridImpl lightGrid;
+
     @BeforeEach
     void setup(){
-        grid = new LightGridImpl();
+        lightGrid = new LightGridImpl();
+
+    }
+    @Test
+    void testGridDimensions(){
+        Assertions.assertEquals(1000, lightGrid.getMaxRows());
+        Assertions.assertEquals(1000, lightGrid.getMaxCols());
     }
 
     @Test
-    void test_GridDimensions(){
-        Assertions.assertEquals(1000, grid.getMaxRows());
-        Assertions.assertEquals(1000, grid.getMaxCols());
+    void testLightCount(){
+        Assertions.assertEquals(1000, lightGrid.getLights().length);
+        Assertions.assertEquals(1000, lightGrid.getLights()[0].length);
     }
 
     @Test
-    void test_LightExists(){
-        Light light = grid.getLights()[0][0];
-        Assertions.assertNotNull(light);
-    }
-
-    @Test
-    void test_initialGridState(){
-        Light[][] lights = grid.getLights();
-
-        for (int i = 0; i < grid.getMaxRows(); i++) {
-            for (int j = 0; j < grid.getMaxCols(); j++) {
-                Assertions.assertFalse(lights[i][j].isTurnedOn());
+    void testInitialGridState(){
+        LightImpl currentLight;
+        for (int i = 0; i < lightGrid.getMaxRows(); i++) {
+            for (int j = 0; j < lightGrid.getMaxCols(); j++) {
+                currentLight = (LightImpl) lightGrid.getLights()[i][j];
+                Assertions.assertNotNull(currentLight);
+                Assertions.assertFalse(currentLight.isTurnedOn());
             }
         }
     }
 
     @Test
-    void test_countLitLights(){
-        Assertions.assertEquals(0, grid.countLitLights());
+    void testCountLitLights(){
+        Assertions.assertEquals(0, lightGrid.countLitLights());
     }
 
     @Test
-    void test_test_countLitLights_oneLightOn(){
-        Coordinates coordinate = new Coordinates(0,0);
-        toggleLightsInGrid(List.of(coordinate));
-        Assertions.assertEquals(1, grid.countLitLights());
+    void testToggleOneLight(){
+        lightGrid.getLights()[0][0].toggle();
+        Assertions.assertEquals(1, lightGrid.countLitLights());
     }
 
+
     @Test
-    void test_test_countLitLights_oneLightToggledTwice(){
+    void testTurnOnFullGrid(){
         Coordinates c1 = new Coordinates(0,0);
-        toggleLightsInGrid(List.of(c1, c1));
-
-        Assertions.assertEquals(0, grid.countLitLights());
+        Coordinates c2 = new Coordinates(999,999);
+        lightGrid.turnOnGrid(c1, c2);
+        Assertions.assertEquals(1000000, lightGrid.countLitLights());
     }
 
     @Test
-    void test_test_countLitLights_twoLightsToggled(){
-        Coordinates c1 = new Coordinates(0,5);
-        Coordinates c2 = new Coordinates(100,679);
-        toggleLightsInGrid(List.of(c1, c2));
-
-        Assertions.assertEquals(2, grid.countLitLights());
+    void testTurnOnSameGridTwice(){
+        Coordinates c1 = new Coordinates(0,0);
+        Coordinates c2 = new Coordinates(1,1);
+        lightGrid.turnOnGrid(c1, c2);
+        Assertions.assertEquals(4, lightGrid.countLitLights());
+        lightGrid.turnOnGrid(c1, c2);
+        Assertions.assertEquals(4, lightGrid.countLitLights());
     }
-
-
-    private void toggleLightsInGrid(List<Coordinates> coordinatesList){
-
-        for (Coordinates c: coordinatesList) {
-            grid.getLights()[c.getRow()][c.getCol()].toggle();
-        }
-
-    }
-
-
 }
